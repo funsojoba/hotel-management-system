@@ -27,6 +27,12 @@ class ListRoomSerializer(serializers.ModelSerializer):
 
 
 class RoomSerializer(serializers.ModelSerializer):
+    images = serializers.ListField(
+        child=serializers.FileField(max_length=100000,
+                                    allow_empty_file=False,
+                                    use_url=True)
+    )
+
     class Meta:
         model = Room
         fields = '__all__'
