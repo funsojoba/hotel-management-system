@@ -17,6 +17,7 @@ class Room(models.Model):
     img_url_2 = models.URLField(null=True)
     img_url_3 = models.URLField(null=True)
     img_url_4 = models.URLField(null=True)
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
