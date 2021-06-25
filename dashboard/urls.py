@@ -2,6 +2,8 @@ from django.urls import path
 from .views.rooms import ListRoomView, CreateRoomView, GetRoomView
 from .views.receptionist import ReceptionistView
 
+from .views_page import home
+
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -21,6 +23,7 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    path('', home),
     path('rooms/', ListRoomView.as_view()),
     path('rooms/create', CreateRoomView.as_view()),
     path('rooms/<str:pk>', GetRoomView.as_view()),
