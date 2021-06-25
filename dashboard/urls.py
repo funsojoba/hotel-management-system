@@ -1,6 +1,7 @@
 from django.urls import path
 from .views.rooms import ListRoomView, CreateRoomView, GetRoomView
 from .views.receptionist import ReceptionistView
+from .views.register import RegisterView
 
 from .views_page import home
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path('rooms/create', CreateRoomView.as_view()),
     path('rooms/<str:pk>', GetRoomView.as_view()),
     path('receptionist', ReceptionistView.as_view()),
+    path('auth/register', RegisterView.as_view()),
     
 
     path('swagger/', schema_view.with_ui('swagger',
