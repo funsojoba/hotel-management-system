@@ -39,8 +39,6 @@ class ReceptionistView(APIView):
             serializer_dict = dict(serializer.data)
             serializer_dict['avatar_url'] = image_url
 
-            print(serializer_dict)
-
             return Response(serializer_dict)
         return Response(serializer.errors)
 
