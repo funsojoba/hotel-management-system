@@ -55,6 +55,7 @@ class CreateRoomView(APIView):
             return Response(response_data)
 
 
-class GetRoomView(generics.RetrieveUpdateAPIView):
+class GetRoomView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
+    

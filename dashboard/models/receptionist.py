@@ -19,9 +19,11 @@ class Receptionist(models.Model):
 
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           editable=False, primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
     gender = models.CharField(max_length=50, choices=GENDER)
     avatar_url = models.URLField(default=AVATAR_URL)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f'{self.user_id.first_name} profile'
