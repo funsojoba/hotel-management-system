@@ -14,6 +14,7 @@ from pathlib import Path
 
 import cloudinary
 from decouple import config
+import rest_framework
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,16 +37,18 @@ AUTH_USER_MODEL = "dashboard.User"
 
 INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'drf_yasg',
+
     'rest_framework',
+    'rest_framework.authtoken',
     'cloudinary',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +135,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 cloudinary.config(
     cloud_name=config('CLOUD_NAME'),

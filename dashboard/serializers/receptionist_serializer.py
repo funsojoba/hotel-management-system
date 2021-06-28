@@ -7,4 +7,5 @@ class ReceptionistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Receptionist
-        fields = '__all__'
+        fields = ['avatar_url', 'user_id', 'gender',
+                  'date_of_birth', 'state_of_origin', 'address']

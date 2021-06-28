@@ -19,7 +19,7 @@ class ReceptionistView(APIView):
 
     def post(self, request):
         data = request.data
-        data['user_id'] = request.user.id
+        
         serializer = self.serializer_class(data=data)
 
         if not serializer.is_valid():
