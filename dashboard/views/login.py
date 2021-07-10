@@ -1,5 +1,5 @@
+from logging import error
 from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 
@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 
 from dashboard.serializers.login import LoginSerializer
 from dashboard.models.user import User
+from dashboard.lib.response import Response
 
 
 class LoginView(APIView):
@@ -16,16 +17,13 @@ class LoginView(APIView):
         email = request.data.get('email', '')
         password = request.data.get('password', '')
 
-        db_email = User.objects.get(email=email)
-
         if not email or not password:
-            return Response({"Invalid credentials": "Ensure both email and password are correct"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data=None, errors={"Invalid credentials": "Ensure both email and password are correct"}, status=status.HTTP_400_BAD_REQUEST)
 
-        if db_email:
-            print(db_email)
-            return Response({"e choke":"db_email"})
+        user = authenticate(request, username=email, password=password)
+        if not user:
+            return Response(errors={"error":"user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({'onaga':'ko naga'})
-        # serializer = self.serializer_class(user)
-        # token, _ = Token.objects.get_or_create(user=user)
-        # return Response({"Token": token.key}, status=status.HTTP_200_OK)
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response(errors=None, data={"Token": token.key}, status=status.HTTP_200_OK)
+        
