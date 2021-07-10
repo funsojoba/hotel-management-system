@@ -9,6 +9,8 @@ def home(request):
             "api/v1/rooms/create",
             "api/v1/rooms/<str:pk >",
             "api/v1/receptionist",
+            "ap1/v1/auth/register",
+            "api/v1/auth/login",
             "api/v1/swagger/[name= 'schema-swagger-ui']",
             "api/v1/redoc/[name = 'schema-redoc']"
         ]
