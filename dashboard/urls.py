@@ -33,11 +33,7 @@ urlpatterns = [
     path('receptionist', ReceptionistView.as_view()),
     path('auth/register', RegisterView.as_view()),
     path('auth/login', LoginView.as_view()),
-    path('token/', views.obtain_auth_token),
 
-
-    path('swagger/', schema_view.with_ui('swagger',
-                                         cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc',
-                                       cache_timeout=0), name='schema-redoc'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

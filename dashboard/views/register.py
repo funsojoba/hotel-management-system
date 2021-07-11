@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
+from rest_framework import status
 
-from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from dashboard.lib.response import Response
 from dashboard.models.user import User
 from dashboard.serializers.user_serializer import UserSerializer
 
@@ -25,6 +26,6 @@ class RegisterView(APIView):
                                                    last_name=last_name, phone=phone, email=email, password=password)
             user.set_password(password)
             user.save()
-            return Response(serializer.data)
+            return Response(data=dict(serializer.data), status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors)
+        return Response(errors=dict(serializer.errors), status=status.HTTP_400_BAD_REQUEST)

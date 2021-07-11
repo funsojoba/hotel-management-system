@@ -1,4 +1,3 @@
-from logging import error
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.authtoken.models import Token
@@ -25,5 +24,5 @@ class LoginView(APIView):
             return Response(errors={"error":"user does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
         token, _ = Token.objects.get_or_create(user=user)
-        return Response(errors=None, data={"Token": token.key}, status=status.HTTP_200_OK)
+        return Response(data={"Token": token.key}, status=status.HTTP_200_OK)
         

@@ -3,8 +3,8 @@ from decouple import config
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, JSONParser, FormParser
-from rest_framework.response import Response
 
+from dashboard.lib.response import Response
 from dashboard.models.room import Room
 from dashboard.serializers.room_serializer import ListRoomSerializer, RoomSerializer
 
@@ -25,7 +25,7 @@ class CreateRoomView(APIView):
         serializer = RoomSerializer(data=request.data)
 
         if not serializer.is_valid():
-            return Response(serializer.errors)
+            return Response(errors=dict(serializer.errors))
 
         if serializer.is_valid(raise_exception=True):
             images = serializer.validated_data['images']
@@ -52,7 +52,8 @@ class CreateRoomView(APIView):
             data['updated_at'] = room.updated_at
 
             response_data = {**{'Id': room.id}, **serializer.data, **data}
-            return Response(response_data)
+            return Response(data=dict(response_data), status=status.HTTP_201_CREATED)
+        return Response(errors=dict(serializer.errors))
 
 
 class GetRoomView(generics.RetrieveUpdateDestroyAPIView):
