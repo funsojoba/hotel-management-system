@@ -44,7 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     otp_code = models.CharField(max_length=6, default=create_otp)
     email_verified = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+    
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superadmin = models.BooleanField(default=False)
