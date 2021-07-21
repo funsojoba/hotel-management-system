@@ -133,6 +133,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -154,3 +156,5 @@ cloudinary.config(
     secure=True
 )
 django_heroku.settings(locals())
+
+# heroku config: set DISABLE_COLLECTSTATIC = 1
