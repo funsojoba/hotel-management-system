@@ -15,6 +15,7 @@ from pathlib import Path
 import cloudinary
 from decouple import config
 import rest_framework
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -152,3 +153,4 @@ cloudinary.config(
     api_secret=config('API_SECRET'),
     secure=True
 )
+django_heroku.settings(locals())
