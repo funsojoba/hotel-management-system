@@ -8,7 +8,7 @@ from dashboard.serializers.booking_serializer import BookingSerializer
 
 class BookingView(APIView):
     serializer_class = BookingSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         data = request.data
