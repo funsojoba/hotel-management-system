@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-0x@@u!5lj^$(epj6&k(b%rjavn+u$k)5k#d$cja@o93^9emgl)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://git.heroku.com/regium-hotels-api.git', '*']
 
 AUTH_USER_MODEL = "dashboard.User"
 
