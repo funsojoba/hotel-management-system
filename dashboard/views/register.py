@@ -3,7 +3,7 @@ from rest_framework import status
 
 from rest_framework.views import APIView
 
-from dashboard.lib.response import Response
+from dashboard.my_lib.response import Response
 from dashboard.models.user import User
 from dashboard.serializers.user_serializer import UserSerializer
 

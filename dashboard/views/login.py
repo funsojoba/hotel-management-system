@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.exceptions import AuthenticationFailed
 
 from dashboard.models.user import User
-from dashboard.lib.response import Response
+from dashboard.my_lib.response import Response
 from dashboard.serializers.login import LoginSerializer
 
 

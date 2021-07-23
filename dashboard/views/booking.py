@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework import status, permissions
 
 from dashboard.models.booking import Booking
-from dashboard.lib.response import Response
+from dashboard.my_lib.response import Response
 from dashboard.serializers.booking_serializer import BookingSerializer
 
 

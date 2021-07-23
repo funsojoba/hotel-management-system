@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 
 from dashboard.serializers.register_receptionist import RegisterReceptionist
-from dashboard.lib.response import Response
+from dashboard.my_lib.response import Response
 from dashboard.models.receptionist import Receptionist
 from dashboard.models.user import User
 
