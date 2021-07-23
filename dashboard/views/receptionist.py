@@ -7,7 +7,7 @@ from rest_framework import status, permissions
 
 import cloudinary.uploader
 
-from dashboard.lib.response import Response
+from dashboard.my_lib.response import Response
 from dashboard.models.receptionist import Receptionist
 from dashboard.serializers.receptionist_serializer import ReceptionistSerializer
 
