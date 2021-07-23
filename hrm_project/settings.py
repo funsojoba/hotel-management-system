@@ -165,4 +165,4 @@ cloudinary.config(
 )
 django_heroku.settings(locals())
 
-# heroku config: set DISABLE_COLLECTSTATIC = 1
+DISABLE_COLLECTSTATIC = 1
